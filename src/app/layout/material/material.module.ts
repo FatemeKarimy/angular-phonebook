@@ -9,6 +9,8 @@ import { MatCardModule } from '@angular/material/card'
 import { MatSelectModule } from '@angular/material/select'
 import { MatCheckboxModule } from '@angular/material/checkbox'
 import { MatRadioModule } from '@angular/material/radio'
+import { MatSortModule } from '@angular/material/sort'
+import { MatPaginatorModule } from '@angular/material/paginator'
 
 const MATERIAL_MODULES = [
   MatButtonModule,
@@ -21,6 +23,8 @@ const MATERIAL_MODULES = [
   MatSelectModule,
   MatCheckboxModule,
   MatRadioModule,
+  MatSortModule,
+  MatPaginatorModule
 ]
 @NgModule({
   declarations: [],

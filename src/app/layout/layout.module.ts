@@ -1,3 +1,4 @@
+import { MatTableModule } from '@angular/material/table';
 import { MaterialModule } from './material/material.module';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
@@ -17,7 +18,8 @@ import { HeaderComponent } from './component/header/header.component';
     MaterialModule
 ],
   exports: [
-      AppLayoutComponent
+      AppLayoutComponent,
+      MaterialModule
   ]
 })
 export class LayoutModule {

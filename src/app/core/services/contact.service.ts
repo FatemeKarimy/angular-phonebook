@@ -2,7 +2,6 @@ import { HttpClient } from '@angular/common/http';
 import { IContact } from './../../shared/models/contact.model';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, of } from 'rxjs';
-import { mockContacts } from './contact.mock';
 import {tap} from 'rxjs/operators';
 
 @Injectable({
@@ -15,7 +14,7 @@ export class ContactService {
 
     private contacts: IContact[] = []
     private contactsSubject$ = new BehaviorSubject(this.contacts)
-    private contactsobservable$ = this.contactsSubject$.asObservable() 
+    public contactsObservable$ = this.contactsSubject$.asObservable() 
 
   constructor(private httpclient: HttpClient) { 
     this.baseUrl = 'http://localhost:3000/contacts'
