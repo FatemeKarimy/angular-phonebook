@@ -10,7 +10,6 @@ export class AppLayoutComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    debugger
   }
 
 }

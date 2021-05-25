@@ -4,7 +4,7 @@ import { IContact } from "src/app/shared/models/contact.model";
 
 
 export const mockContact1 : IContact = {
-    id: 1,
+    id: '1',
     firstname: 'name1',
     lastname: 'lastname1',
     phonenumber: '0176111111',
@@ -12,7 +12,7 @@ export const mockContact1 : IContact = {
     email: 'email1'
 }
 export const mockContact2 : IContact = {
-    id: 2,
+    id: '2',
     firstname: 'name2',
     lastname: 'lastname2',
     phonenumber: '0176222222',
@@ -20,7 +20,7 @@ export const mockContact2 : IContact = {
     email: 'email2'
 }
 export const mockContact3 : IContact = {
-    id: 3,
+    id: '3',
     firstname: 'name3',
     lastname: 'lastname3',
     phonenumber: '0176333333',
@@ -28,7 +28,7 @@ export const mockContact3 : IContact = {
     email: 'email3'
 }
 export const mockContact4 : IContact = {
-    id: 4,
+    id: '4',
     firstname: 'name4',
     lastname: 'lastname4',
     phonenumber: '0176444444',
