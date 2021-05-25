@@ -21,7 +21,13 @@ describe('ContactsTableComponent', () => {
     await TestBed.configureTestingModule({
       declarations: [ ContactsTableComponent ],
       imports: [MaterialModule],
-      providers: []
+      providers: [
+        {
+          provide: contactService,
+          useValue: contactService
+        },
+      ],
+      
     })
     .compileComponents();
   });

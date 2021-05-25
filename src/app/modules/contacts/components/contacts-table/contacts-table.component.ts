@@ -20,8 +20,8 @@ export class ContactsTableComponent implements OnInit , AfterViewInit , OnDestro
   displayedColumns: string[] = ['firstname','lastname','address','email'] 
   dataSource = new MatTableDataSource()
 
-  // @ViewChild(MatSort) sort: MatSort
-  // @ViewChild(MatPaginator) paginator: MatPaginator
+  @ViewChild(MatSort) sort: MatSort
+  @ViewChild(MatPaginator) paginator: MatPaginator
 
   ngOnInit(): void {
     this.subscriptions.add(
@@ -29,7 +29,7 @@ export class ContactsTableComponent implements OnInit , AfterViewInit , OnDestro
     )
   }
   ngAfterViewInit(): void {
-    // this.dataSource.paginator = this.paginator
+    this.dataSource.paginator = this.paginator
   }
   ngOnDestroy(): void {
     this.subscriptions.unsubscribe()
