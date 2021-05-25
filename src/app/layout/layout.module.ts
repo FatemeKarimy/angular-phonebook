@@ -8,7 +8,8 @@ import { HeaderComponent } from './component/header/header.component';
 @NgModule({
   declarations: [
     AppLayoutComponent,
-    HeaderComponent
+    HeaderComponent,
+    AppLayoutComponent
   ],
   imports: [
     CommonModule,
