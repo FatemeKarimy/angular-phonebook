@@ -21,13 +21,14 @@ export class ContactService {
     this.baseUrl = 'http://localhost:3000/contacts'
   }
 
-  getAll(): Observable<IContact[]> {
-    debugger
-    return of(mockContacts).pipe(
-      tap((contacts) => {
-        this.contacts = contacts
+ getAll(): Observable<IContact[]> {
+   return this.httpclient.get<IContact[]>(this.baseUrl).pipe(
+     tap((contacts) => {
+        this.contacts = contacts;
         this.contactsSubject$.next(contacts)
-      })
-    )
-  }
+     })
+   )
+
+ }
+
 }
