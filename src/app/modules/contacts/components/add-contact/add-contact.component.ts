@@ -11,23 +11,25 @@ import {ActivatedRoute, Router} from "@angular/router";
 export class AddContactComponent implements OnInit {
   contactGroup: FormGroup
   titleAlert: string = 'This field is required'
-  post: any = ''
+  contactRow: IContact
   constructor(private contactService: ContactService,
               private formBuilder: FormBuilder,
               private route: ActivatedRoute,
               private router: Router) { }
   ngOnInit(): void {
-    this.createForm();
+    this.contactRow = this.contactService.contactRow
+    this.createForm()
     this.setChangeValidate()
   }
   createForm() {
+
     let emailregex: RegExp = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
     this.contactGroup = this.formBuilder.group({
-      'firstname': [null, Validators.required],
-      'lastname': [null, Validators.required],
-      'phonenumber': [null, Validators.required],
-      'email': [null, [Validators.required, Validators.pattern(emailregex)]],
-      'address': [null],
+      'firstname': [this.contactRow.firstname, Validators.required],
+      'lastname': [this.contactRow.lastname, Validators.required],
+      'phonenumber': [this.contactRow.phonenumber, Validators.required],
+      'email': [this.contactRow.email, [Validators.required, Validators.pattern(emailregex)]],
+      'address': [this.contactRow.address],
       'validate': ''
     });
   }

@@ -1,4 +1,4 @@
-import {HttpClient, HttpErrorResponse} from '@angular/common/http';
+import {HttpClient, HttpErrorResponse, HttpHeaders} from '@angular/common/http';
 import { IContact } from './../../shared/models/contact.model';
 import { Injectable } from '@angular/core';
 import {BehaviorSubject, Observable, of, throwError} from 'rxjs';
@@ -11,6 +11,7 @@ export class ContactService {
     private contacts: IContact[] = []
     private contactsSubject$ = new BehaviorSubject(this.contacts)
     public contactsObservable$ = this.contactsSubject$.asObservable()
+    public contactRow : IContact
   constructor(private httpClient: HttpClient) {
     this.baseUrl = 'http://localhost:3000/contacts'
   }
@@ -23,13 +24,23 @@ export class ContactService {
    )
  }
   save(contact: IContact): Observable<IContact> {
-    debugger
     const contactJson = JSON.stringify(contact)
-    return this.httpClient.post<any>(this.baseUrl, contactJson).pipe(catchError(this.handleError))
+    const headers = new HttpHeaders().set('Content-Type', 'application/json; charset=utf-8');
+    return this.httpClient.post<IContact>(this.baseUrl, contactJson, {headers: headers}).pipe(catchError(this.handleError))
   }
+    
+  update(contact: IContact): Observable<IContact> {
+    const contactJson = JSON.stringify(contact)
+    const headers = new HttpHeaders().set('Content-Type', 'application/json; charset=utf-8');
+    return this.httpClient
+      .put<IContact>(`${this.baseUrl}/${contact.id}`, contactJson)
+      .pipe(catchError(this.handleError))
+  }
+
   delete(contactId: string): Observable<any> {
     return this.httpClient.delete<any>(`${this.baseUrl}/${contactId}`)
   }
+
   handleError(error: HttpErrorResponse): Observable<never> {
     return throwError(error)
   }

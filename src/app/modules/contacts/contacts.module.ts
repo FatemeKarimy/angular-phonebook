@@ -7,8 +7,6 @@ import { ContactsComponent } from './components/contacts/contacts.component';
 import { ContactsTableComponent } from './components/contacts-table/contacts-table.component';
 import { AddContactComponent } from './components/add-contact/add-contact.component';
 
-
-
 @NgModule({
   declarations: [
     ContactsComponent,

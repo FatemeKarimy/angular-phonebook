@@ -12,10 +12,10 @@ const routes: Routes = [
         },
     },
     {   
-        path: 'add',
+        path: 'add-edit',
         component: AddContactComponent,
         data: {
-            tabNavId: 'add'
+            tabNavId: 'add-edit'
         }
     }
 ]

@@ -1,4 +1,4 @@
-
+import { Router } from '@angular/router';
 import { Component, OnDestroy, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 import { IContact } from './../../../../shared/models/contact.model';
 import { MatTableDataSource } from '@angular/material/table';
@@ -16,8 +16,8 @@ import { Subscription } from 'rxjs';
 export class ContactsTableComponent implements OnInit , AfterViewInit , OnDestroy {
 
   private subscriptions = new Subscription()
-  constructor(private contactService: ContactService) {}
-  displayedColumns: string[] = ['firstname','lastname','address','email','delete']
+  constructor(private contactService: ContactService,private router: Router) {}
+  displayedColumns: string[] = ['firstname','lastname','address','email','edit','delete']
   dataSource = new MatTableDataSource()
 
   @ViewChild(MatSort) sort: MatSort
@@ -44,5 +44,9 @@ export class ContactsTableComponent implements OnInit , AfterViewInit , OnDestro
       await this.contactService.delete(id).toPromise()
     } catch (error) {
     }
+  }
+  edit(row : IContact) {
+    this.contactService.contactRow = row 
+    this.router.navigate(['contacts/add-edit']);
   }
 }
