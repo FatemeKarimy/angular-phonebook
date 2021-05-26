@@ -11,7 +11,7 @@ import {ActivatedRoute, Router} from "@angular/router";
 export class AddContactComponent implements OnInit {
   contactGroup: FormGroup
   titleAlert: string = 'This field is required'
-  contactRow: IContact
+  contactRow: any
   constructor(private contactService: ContactService,
               private formBuilder: FormBuilder,
               private route: ActivatedRoute,
@@ -46,6 +46,7 @@ export class AddContactComponent implements OnInit {
       }
     )
   }
+
   async save(): Promise<void> {
     const formValues = this.contactGroup.value
     let contact: IContact = {
@@ -65,6 +66,28 @@ export class AddContactComponent implements OnInit {
       console.log('Save successful!')
     } catch (error) {
        console.log('Save error')
+    }
+  }
+
+  async update(): Promise<void> {
+    const formValues = this.contactGroup.value
+    let contact: IContact = {
+      id: this.contactRow._id,
+      firstname: formValues.firstname,
+      lastname: formValues.lastname,
+      phonenumber: formValues.phonenumber,
+      address: formValues.address,
+      email: formValues.email,
+    }
+    if (!contact) {
+      return
+    }
+    try {
+      await this.contactService.update(contact).toPromise()
+      this.router.navigate(['contacts'], {})
+      console.log('Update successful!')
+    } catch (error) {
+       console.log('Update error')
     }
   }
 }

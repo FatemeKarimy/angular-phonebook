@@ -33,7 +33,7 @@ export class ContactService {
     const contactJson = JSON.stringify(contact)
     const headers = new HttpHeaders().set('Content-Type', 'application/json; charset=utf-8');
     return this.httpClient
-      .put<IContact>(`${this.baseUrl}/${contact.id}`, contactJson)
+      .put<IContact>(`${this.baseUrl}/${contact.id}`, contactJson, {headers: headers})
       .pipe(catchError(this.handleError))
   }
 
