@@ -1,5 +1,6 @@
 import {NgModule} from "@angular/core";
 import {RouterModule, Routes} from "@angular/router";
+import { AddContactComponent } from "./components/add-contact/add-contact.component";
 import { ContactsComponent } from "./components/contacts/contacts.component";
 
 const routes: Routes = [
@@ -9,6 +10,13 @@ const routes: Routes = [
         data: {
             tabNavId: 'contacts',
         },
+    },
+    {   
+        path: 'add',
+        component: AddContactComponent,
+        data: {
+            tabNavId: 'add'
+        }
     }
 ]
 @NgModule({

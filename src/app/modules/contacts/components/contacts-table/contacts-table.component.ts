@@ -17,7 +17,7 @@ export class ContactsTableComponent implements OnInit , AfterViewInit , OnDestro
 
   private subscriptions = new Subscription()
   constructor(private contactService: ContactService) {}
-  displayedColumns: string[] = ['firstname','lastname','address','email'] 
+  displayedColumns: string[] = ['firstname','lastname','address','email','delete']
   dataSource = new MatTableDataSource()
 
   @ViewChild(MatSort) sort: MatSort
@@ -35,7 +35,14 @@ export class ContactsTableComponent implements OnInit , AfterViewInit , OnDestro
     this.subscriptions.unsubscribe()
   }
   handleData(contacts: IContact[]): void {
+    
     this.dataSource.data = contacts
   }
 
+  async delete(id: any): Promise<void> {
+    try {
+      await this.contactService.delete(id).toPromise()
+    } catch (error) {
+    }
+  }
 }

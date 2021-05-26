@@ -16,18 +16,20 @@ export class ContactService {
     private contactsSubject$ = new BehaviorSubject(this.contacts)
     public contactsObservable$ = this.contactsSubject$.asObservable() 
 
-  constructor(private httpclient: HttpClient) { 
+  constructor(private httpClient: HttpClient) { 
     this.baseUrl = 'http://localhost:3000/contacts'
   }
 
  getAll(): Observable<IContact[]> {
-   return this.httpclient.get<IContact[]>(this.baseUrl).pipe(
+   return this.httpClient.get<IContact[]>(this.baseUrl).pipe(
      tap((contacts) => {
         this.contacts = contacts;
         this.contactsSubject$.next(contacts)
      })
    )
-
  }
-
+ delete(contactId: string): Observable<any> {
+  return this.httpClient.delete<any>(`${this.baseUrl}/${contactId}`)
+}
+ 
 }

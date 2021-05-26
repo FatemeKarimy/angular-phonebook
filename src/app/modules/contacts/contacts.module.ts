@@ -5,13 +5,15 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ContactsComponent } from './components/contacts/contacts.component';
 import { ContactsTableComponent } from './components/contacts-table/contacts-table.component';
+import { AddContactComponent } from './components/add-contact/add-contact.component';
 
 
 
 @NgModule({
   declarations: [
     ContactsComponent,
-    ContactsTableComponent
+    ContactsTableComponent,
+    AddContactComponent
   ],
   imports: [
     CommonModule,
