@@ -1,38 +1,37 @@
-<div class="example-header">
-  <mat-form-field>
-    <input matInput  placeholder="Filter">
-  </mat-form-field>
-</div>
+<mat-form-field>
+  <mat-label>Filter</mat-label>
+  <input matInput (keyup)="applyFilter($event)" placeholder="Ex. ium" #input>
+</mat-form-field>
 
-<div role="presentation">
+<div>
   <table aria-labelledby="contacts-header" mat-table [dataSource]="dataSource" matSort>
     <ng-container matColumnDef="firstname">
-      <th scope="col" mat-header-cell *matHeaderCellDef mat-sort-header>Firstname</th>
+      <th scope="col" mat-header-cell *matHeaderCellDef>Firstname</th>
       <td mat-cell *matCellDef="let element">{{ element.firstname }}</td>
     </ng-container>
 ​
     <ng-container matColumnDef="lastname">
-      <th scope="col" mat-header-cell *matHeaderCellDef mat-sort-header>lastname</th>
+      <th scope="col" mat-header-cell *matHeaderCellDef>Lastname</th>
       <td mat-cell *matCellDef="let element">{{ element.lastname }}</td>
     </ng-container>
 ​
     <ng-container matColumnDef="phonenumber">
-      <th scope="col" mat-header-cell *matHeaderCellDef mat-sort-header>Phonenumber</th>
+      <th scope="col" mat-header-cell *matHeaderCellDef>Phonenumber</th>
       <td mat-cell *matCellDef="let element">{{ element.phonenumber }}</td>
     </ng-container>
     
     <ng-container matColumnDef="address">
-        <th scope="col" mat-header-cell *matHeaderCellDef mat-sort-header>Address</th>
+        <th scope="col" mat-header-cell *matHeaderCellDef>Address</th>
         <td mat-cell *matCellDef="let element">{{ element.address }}</td>
       </ng-container>
 
       <ng-container matColumnDef="email">
-        <th scope="col" mat-header-cell *matHeaderCellDef mat-sort-header>Email</th>
+        <th scope="col" mat-header-cell *matHeaderCellDef>Email</th>
         <td mat-cell *matCellDef="let element">{{ element.email }}</td>
       </ng-container>
       
       <ng-container matColumnDef="edit">
-        <th mat-header-cell *matHeaderCellDef> Edit </th>
+        <th mat-header-cell *matHeaderCellDef></th>
         <td mat-cell *matCellDef="let element">
           <button mat-icon-button color="warn" (click)="edit(element)">
             <mat-icon class="mat-18">edit</mat-icon>
@@ -41,7 +40,7 @@
       </ng-container>
 
       <ng-container matColumnDef="delete">
-        <th mat-header-cell *matHeaderCellDef> Delete </th>
+        <th mat-header-cell *matHeaderCellDef></th>
         <td mat-cell *matCellDef="let element">
           <button mat-icon-button color="warn" (click)="delete(element._id)">
               <mat-icon class="mat-18">delete</mat-icon>

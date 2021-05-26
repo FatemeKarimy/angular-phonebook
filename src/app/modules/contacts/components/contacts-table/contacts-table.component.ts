@@ -45,8 +45,15 @@ export class ContactsTableComponent implements OnInit , AfterViewInit , OnDestro
     } catch (error) {
     }
   }
+  
   edit(row : IContact) {
     this.contactService.contactRow = row 
     this.router.navigate(['contacts/add-edit']);
   }
+
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
+  
 }
