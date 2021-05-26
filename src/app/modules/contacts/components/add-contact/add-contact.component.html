@@ -1,33 +1,33 @@
-<form class="text-center">
-    <mat-form-field class="md-form mt-3">
-      <input matInput placeholder="First Name" formControlName="firstname" required>
-      <mat-error>
-        <mat-error class="error-message"></mat-error>
-      </mat-error>
-    </mat-form-field>
-    <mat-form-field class="md-form mt-3">
-        <input matInput placeholder="Last Name" formControlName="lastname" required>
-        <mat-error>
-          <mat-error class="error-message"></mat-error>
-        </mat-error>
-      </mat-form-field>
-      <mat-form-field class="md-form mt-3">
-        <input matInput placeholder="Phone Number" formControlName="phonenumber" required>
-        <mat-error>
-          <mat-error class="error-message"></mat-error>
-        </mat-error>
-      </mat-form-field>
-      <mat-form-field class="md-form mt-3">
-        <input matInput placeholder="Address" formControlName="address" required>
-        <mat-error>
-          <mat-error class="error-message"></mat-error>
-        </mat-error>
-      </mat-form-field>
-      <mat-form-field class="md-form mt-3">
-        <input matInput placeholder="Email" formControlName="email" required>
-        <mat-error>
-          <mat-error class="error-message"></mat-error>
-        </mat-error>
-      </mat-form-field>
-	<button class="submit-btn" color="primary" mat-raised-button type="submit" (click)="update()">Submit</button>
+<form class="text-center" [formGroup]="contactGroup" >
+  <mat-form-field class="md-form mt-3" >
+    <input matInput placeholder="First Name" formControlName="firstname" required>
+    <mat-error>
+      <mat-error class="error-message"></mat-error>
+    </mat-error>
+  </mat-form-field>
+  <mat-form-field class="md-form mt-3">
+    <input matInput placeholder="Last Name" formControlName="lastname" required>
+    <mat-error>
+      <mat-error class="error-message"></mat-error>
+    </mat-error>
+  </mat-form-field>
+  <mat-form-field class="md-form mt-3">
+    <input matInput placeholder="Phone Number" formControlName="phonenumber" required>
+    <mat-error>
+      <mat-error class="error-message"></mat-error>
+    </mat-error>
+  </mat-form-field>
+  <mat-form-field class="md-form mt-3">
+    <input matInput placeholder="Address" formControlName="address" required>
+    <mat-error>
+      <mat-error class="error-message"></mat-error>
+    </mat-error>
+  </mat-form-field>
+  <mat-form-field class="md-form mt-3">
+    <input matInput placeholder="Email" formControlName="email" required>
+    <mat-error>
+      <mat-error class="error-message"></mat-error>
+    </mat-error>
+  </mat-form-field>
+  <button color="primary" mat-raised-button (click)="save()">Save</button>
 </form>
