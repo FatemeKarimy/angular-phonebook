@@ -17,7 +17,7 @@ export class ContactsTableComponent implements OnInit , AfterViewInit , OnDestro
 
   private subscriptions = new Subscription()
   constructor(private contactService: ContactService,private router: Router) {}
-  displayedColumns: string[] = ['firstname','lastname','address','email','edit','delete']
+  displayedColumns: string[] = ['firstname','lastname','phonenumber','address','email','edit','delete']
   dataSource = new MatTableDataSource()
 
   @ViewChild(MatSort) sort: MatSort
