@@ -1,8 +1,5 @@
 import { IContact } from "src/app/shared/models/contact.model";
 
-
-
-
 export const mockContact1 : IContact = {
     id: '1',
     firstname: 'name1',

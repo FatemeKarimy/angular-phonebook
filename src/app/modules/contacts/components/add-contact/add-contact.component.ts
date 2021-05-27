@@ -3,23 +3,28 @@ import {Component, Input, OnInit} from '@angular/core';
 import { ContactService } from 'src/app/core/services/contact.service';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import { Router} from "@angular/router";
+
 @Component({
   selector: 'gnu-add-contact',
   templateUrl: './add-contact.component.html',
   styleUrls: ['./add-contact.component.scss']
 })
+
 export class AddContactComponent implements OnInit {
   contactGroup: FormGroup
   titleAlert: string = 'This field is required'
   contactRow: any
+
   constructor(private contactService: ContactService,
               private formBuilder: FormBuilder,
               private router: Router) { }
+
   ngOnInit(): void {
     this.contactRow = this.contactService.contactRow
     this.createForm()
     this.setChangeValidate()
   }
+
   createForm() {
     let emailregex: RegExp = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
     if(this.contactRow) {
