@@ -1,33 +1,24 @@
 import { HttpClient } from '@angular/common/http';
-import { TestBed } from '@angular/core/testing';
-import { of } from 'rxjs';
-import { mockContacts } from './contact.mock';
 import { ContactService } from './contact.service';
-
+import {of} from "rxjs";
 describe('ContactService', () => {
   let service: ContactService;
   const baseUrl = 'http://localhost:3000/contacts'
 
   const httpClient = ({
-    get: () => of(mockContacts),
-    post: () => of({}),
+    get: jest.fn(),
+    post: jest.fn(),
+    put: jest.fn(),
+    delete: jest.fn(),
   } as unknown) as HttpClient
 
   beforeEach(() => {
+    jest.clearAllMocks()
+    jest.spyOn(httpClient, 'get').mockImplementation(() => of())
     service = new ContactService(httpClient)
-    jest.restoreAllMocks()
   })
-​
+
   it('should be created', () => {
     expect(service).toBeTruthy()
   })
-
-  beforeEach(() => {
-    TestBed.configureTestingModule({});
-    service = TestBed.inject(ContactService);
-  });
-
-  it('should be created', () => {
-    expect(service).toBeTruthy();
-  });
 });

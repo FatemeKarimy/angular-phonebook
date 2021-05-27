@@ -2,7 +2,7 @@ import { IContact } from './../../../../shared/models/contact.model';
 import {Component, Input, OnInit} from '@angular/core';
 import { ContactService } from 'src/app/core/services/contact.service';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {ActivatedRoute, Router} from "@angular/router";
+import { Router} from "@angular/router";
 @Component({
   selector: 'gnu-add-contact',
   templateUrl: './add-contact.component.html',
@@ -14,7 +14,6 @@ export class AddContactComponent implements OnInit {
   contactRow: any
   constructor(private contactService: ContactService,
               private formBuilder: FormBuilder,
-              private route: ActivatedRoute,
               private router: Router) { }
   ngOnInit(): void {
     this.contactRow = this.contactService.contactRow
