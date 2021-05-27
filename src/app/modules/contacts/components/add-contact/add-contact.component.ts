@@ -22,17 +22,29 @@ export class AddContactComponent implements OnInit {
     this.setChangeValidate()
   }
   createForm() {
-
     let emailregex: RegExp = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
-    this.contactGroup = this.formBuilder.group({
-      'firstname': [this.contactRow.firstname, Validators.required],
-      'lastname': [this.contactRow.lastname, Validators.required],
-      'phonenumber': [this.contactRow.phonenumber, Validators.required],
-      'email': [this.contactRow.email, [Validators.required, Validators.pattern(emailregex)]],
-      'address': [this.contactRow.address],
-      'validate': ''
-    });
+    if(this.contactRow) {
+      this.contactGroup = this.formBuilder.group({
+        'firstname': [this.contactRow.firstname, Validators.required],
+        'lastname': [this.contactRow.lastname, Validators.required],
+        'phonenumber': [this.contactRow.phonenumber, Validators.required],
+        'email': [this.contactRow.email, [Validators.required, Validators.pattern(emailregex)]],
+        'address': [this.contactRow.address],
+        'validate': ''
+      });
+    } else {
+      this.contactGroup = this.formBuilder.group({
+        'firstname': [null, Validators.required],
+        'lastname': [null, Validators.required],
+        'phonenumber': [null, Validators.required],
+        'email': [null, [Validators.required, Validators.pattern(emailregex)]],
+        'address': [null],
+        'validate': ''
+      })
+    }
+    
   }
+
   setChangeValidate() {
     this.contactGroup.get('validate').valueChanges.subscribe(
       (validate) => {

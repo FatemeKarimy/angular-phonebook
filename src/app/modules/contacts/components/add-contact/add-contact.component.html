@@ -1,5 +1,5 @@
 <form class="text-center" [formGroup]="contactGroup" >
-  <mat-form-field class="md-form mt-3" >
+  <mat-form-field class="md-form mt-3">
     <input matInput placeholder="First Name" formControlName="firstname" required>
     <mat-error>
       <mat-error class="error-message"></mat-error>
@@ -29,6 +29,6 @@
       <mat-error class="error-message"></mat-error>
     </mat-error>
   </mat-form-field>
-  <button color="primary" mat-raised-button (click)="save()">Save</button>
-  <button color="primary" mat-raised-button (click)="update()">Update</button>
+  <button color="primary" mat-raised-button *ngIf="!contactRow" (click)="save()">Save</button>
+  <button color="primary" mat-raised-button *ngIf="contactRow" (click)="update()">Update</button>
 </form>

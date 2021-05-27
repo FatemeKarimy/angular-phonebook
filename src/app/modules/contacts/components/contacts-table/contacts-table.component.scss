@@ -4,7 +4,7 @@ table {
     overflow-y: hidden;
     min-width: 500px;
 }
-.mat-form-field {
-    font-size: 14px;
-    width: 100%;
-  }
+th.mat-header-cell {
+    text-align: left;
+    max-width: 300px;
+}
