@@ -6,6 +6,7 @@ import { Subject, Observable } from 'rxjs';
 
 import { ContactsTableComponent } from './contacts-table.component';
 import { of } from 'rxjs';
+import { RouterTestingModule } from '@angular/router/testing';
 
 describe('ContactsTableComponent', () => {
   let component: ContactsTableComponent;
@@ -17,10 +18,15 @@ describe('ContactsTableComponent', () => {
     getAll: () => of(),
   } as ContactService
 
+
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [ ContactsTableComponent ],
-      imports: [MaterialModule],
+      imports: [
+        MaterialModule,
+        RouterTestingModule.withRoutes([]),
+
+      ],
       providers: [
         {
           provide: contactService,

@@ -1,7 +1,8 @@
 # angular-phonebook
-Angular Phone-book Project
+Angular Phone-book 
+Navigate to Backend `http://localhost:3000/contacts` 
 
-# APM
+# Angular 
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.0.1.
 
