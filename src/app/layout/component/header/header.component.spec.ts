@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
 
 import { HeaderComponent } from './header.component';
+import {MaterialModule} from "../../material/material.module";
 
 describe('HeaderComponent', () => {
   let component: HeaderComponent;
@@ -15,6 +16,7 @@ describe('HeaderComponent', () => {
     await TestBed.configureTestingModule({
       declarations: [ HeaderComponent ],
       imports: [
+        MaterialModule,
         RouterTestingModule.withRoutes([])
       ]
     })
