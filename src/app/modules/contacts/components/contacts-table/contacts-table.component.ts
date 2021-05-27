@@ -29,25 +29,34 @@ export class ContactsTableComponent implements OnInit , AfterViewInit , OnDestro
     )
   }
   ngAfterViewInit(): void {
+    this.dataSource.sort = this.sort;
     this.dataSource.paginator = this.paginator
   }
   ngOnDestroy(): void {
     this.subscriptions.unsubscribe()
   }
   handleData(contacts: IContact[]): void {
-    
     this.dataSource.data = contacts
+  }
+
+  handleWithDialog(id: any): void {
+    if( window.confirm('Are you sure?') ) {
+      this.delete(id).then(() => {
+        this.contactService.getAll().subscribe((contacts) => this.handleData(contacts))
+      })
+    }
   }
 
   async delete(id: any): Promise<void> {
     try {
       await this.contactService.delete(id).toPromise()
+      this.router.navigate(['contacts']);
     } catch (error) {
     }
   }
-  
+
   edit(row : IContact) {
-    this.contactService.contactRow = row 
+    this.contactService.contactRow = row
     this.router.navigate(['contacts/add-edit']);
   }
 
@@ -55,5 +64,5 @@ export class ContactsTableComponent implements OnInit , AfterViewInit , OnDestro
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
-  
+
 }

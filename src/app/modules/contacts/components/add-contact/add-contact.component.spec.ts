@@ -6,10 +6,13 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {RouterTestingModule} from "@angular/router/testing";
 import {ContactService} from "../../../../core/services/contact.service";
 import {of} from "rxjs";
+import {mockContact1} from "../../../../core/services/contact.mock";
+import {Router} from "@angular/router";
 
 describe('AddContactComponent', () => {
   let component: AddContactComponent
   let fixture: ComponentFixture<AddContactComponent>
+  let router: Router
 
   const contactService = ({
     update: () => of(),
@@ -44,4 +47,5 @@ describe('AddContactComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
 });
